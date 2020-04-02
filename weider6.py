@@ -7,7 +7,7 @@ import time
 from typing import NamedTuple
 
 SERIES_COUNT = 3
-BREAK_TIME = timedelta(seconds=1)
+BREAK_TIME = timedelta(seconds=1.5)
 REP_TICKS = 3
 REP_TICK_TIME = timedelta(seconds=1)
 
@@ -37,6 +37,7 @@ class Exercise(NamedTuple):
                 for _ in range(REP_TICKS):
                     say(rep, duration=REP_TICK_TIME.total_seconds())
                 time.sleep(BREAK_TIME.total_seconds())
+        time.sleep(BREAK_TIME.total_seconds())
 
 
 EXERCISES = [
@@ -51,6 +52,8 @@ EXERCISES = [
 
 def main():
     try:
+        for c in range(5, 0, -1):
+            say(c)
         reps = int(sys.argv[1])
         for serie in range(1, SERIES_COUNT + 1):
             say('series {}'.format(serie))
